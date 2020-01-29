@@ -1,3 +1,6 @@
 *.egg-info/
 venv/
 .ipynb_checkpoints/
+*.pyc
+.python-version
+ 
