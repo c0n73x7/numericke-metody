@@ -29,6 +29,7 @@ def finite_difference(f, x0, h, method='cd'):
             - její derivaci jako přímku,
             - numerickou derivaci jako přímku
     '''
+    
     x = sym.symbols('x')
     f_sym = sym.sympify(f)
     f_der_sym_x0 = sym.diff(f_sym,x).subs(x,x0).evalf()
@@ -37,12 +38,17 @@ def finite_difference(f, x0, h, method='cd'):
     f_x0_plus_h = f_sym.subs(x,x0+h).evalf()
     f_x0_minus_h = f_sym.subs(x,x0-h).evalf()
     if method == 'fd':
-        res = (f_x0_plus_h-f_x0)/h
+        f_der_x0 = (f_x0_plus_h-f_x0)/h
     elif method == 'bd':
-        res = (f_x0-f_x0_minus_h)/h
+        f_der_x0 = (f_x0-f_x0_minus_h)/h
     else:
-        res = (f_x0_plus_h-f_x0_minus_h)/h/2
+        f_der_x0 = (f_x0_plus_h-f_x0_minus_h)/h/2
     
-    progress = dict(f_der_sym_x0 = f_der_sym_x0, err = np.abs(f_der_sym_x0-res)) 
+    result = {
+        'f_der_x0': f_der_x0,
+        'f_der_sym_x0' : f_der_sym_x0,
+        'err': np.abs(f_der_sym_x0-f_der_x0)
+    }
     
-    return res, progress 
+    
+    return result
