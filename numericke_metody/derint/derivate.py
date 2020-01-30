@@ -75,6 +75,59 @@ def central_difference(f_str, x0, h):
     f = str_to_func(f_str)    
     return (f(x0+h)-f(x0-h))/(2*h)
 
+
+def der_richardson(f_str, x0, h_init, N, method='cd'):
+    '''
+    Vypočítá derivaci funkce f v bodě x0 pomocí Richardsonovy extrapolace
+    
+    Vstupní parametry
+    -----------------
+    f_str .... zadaná funkce (string)
+    x0 ....... bod v kterém chci derivaci f
+    h_init.... základní krok
+    N ........ počet korekcí 
+    method ... použitá defierence
+            fd ... levá
+            bd ... pravá
+            cd ... centrální
+    
+    Výstupní parametry (slovník)
+    ----------------------------
+    result keys
+        f_der ........ Numerická hodnota derivace fce v bodě x0.
+        f_der_vals ... hodnoty použité metody a všech korekcí 
+    '''
+    
+    hs = [h_init/(2**i) for i in range(N+1)]
+    D = []
+    if method == 'cd':
+        D.append([central_difference(f_str,x0,h) for h in hs])
+        m = 2
+    elif method == 'fd': 
+        D.append([forward_difference(f_str,x0,h) for h in hs])
+        m = 1
+    elif method == 'bd': 
+        D.append([backward_difference(f_str,x0,h) for h in hs])
+        m = 1
+    else:
+        help(der_richardson)
+        result = {
+            'f_der': None,
+            'f_der_vals': None
+        }
+        return result
+        
+    for i in range(N):
+        D.append([D[i][j+1]-(D[i][j+1]-D[i][j])/(1-2**(m*(i+1))) for j in range(len(D[i])-1)])
+        
+    result = {
+        'f_der': D[-1][-1],
+        'f_der_vals': D
+    }
+    
+    return result
+
+
 def second_central_difference(f_str, x0, h):
     '''
     Vypočítá druhou derivaci funkce f v bodě x0 pomocí tříbodového vzorce
