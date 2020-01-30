@@ -1,9 +1,9 @@
 import numpy as np
 
 
-def gauss_seidel_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
+def jacobi_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
     '''
-    Gauss-Seidelova metoda pro řešení soustavy rovnic Ax=b
+    Jacobiho metoda pro řešení soustavy rovnic Ax=b
     Vstupní parametry
     -----------------
     A .............. matice soustavy
@@ -24,8 +24,8 @@ def gauss_seidel_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
     '''
     D = np.diag(np.diagonal(A))
     U, L = np.triu(A) - D, np.tril(A) - D
-    H = np.dot(np.linalg.inv(-(L + D)), U)
-    g = np.dot(np.linalg.inv(L + D), b)
+    H = np.dot(np.linalg.inv(-D), L + U)
+    g = np.dot(np.linalg.inv(D), b)
     x_vals, norm_err_vals = list(), [None]
     x = x0
     if show_progress:
