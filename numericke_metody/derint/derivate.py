@@ -1,7 +1,63 @@
 import numpy as np
 import sympy as sym
 
-def finite_difference(f, x0, h, method='cd'):
+def str_to_func(s):
+    '''
+    Ze stringu vytvoří numpy fci.
+
+    Vstupní parametry
+    -----------------
+    s .... string obsahující fci v proměnné x (např. sin(1/x)).
+    
+    Výstupní parametry
+    ------------------
+    Numpy funkce.
+    
+    '''
+    x = sym.symbols('x')
+    f_sym = sym.sympify(s)
+    return sym.lambdify(x,f_sym,'numpy')
+
+
+def forward_difference(f_str, x0, h):
+    '''
+    Vypočítá derivaci funkce f v bodě x0 pomocí pravé diference
+    
+    Vstupní parametry
+    -----------------
+    f ........ zadaná funkce (string)
+    x0 ....... bod v kterém chci derivaci f
+    h ........ krok
+    
+    Výstupní parametry
+    ------------------
+    Numerická hodnota derivace fce v bodě x0.
+    
+    '''
+    f = str_to_func(f_str)
+    return (f(x0+h)-f(x0))/h
+
+
+def backward_difference(f_str, x0, h):
+    '''
+    Vypočítá derivaci funkce f v bodě x0 pomocí levé diference
+    
+    Vstupní parametry
+    -----------------
+    f ........ zadaná funkce (string)
+    x0 ....... bod v kterém chci derivaci f
+    h ........ krok
+    
+    Výstupní parametry
+    ------------------
+    Numerická hodnota derivace fce v bodě x0.
+    
+    '''
+    f = str_to_func(f_str)
+    return (f(x0)-f(x0-h))/h
+
+
+def central_difference(f_str, x0, h):
     '''
     Vypočítá derivaci funkce f v bodě x0 pomocí centrální diference
     
@@ -10,45 +66,29 @@ def finite_difference(f, x0, h, method='cd'):
     f ........ zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     h ........ krok
-    method ... použitá metoda:
-            fd ... pravá diference
-            bd ... levá diference
-            cd ... centrální diference
     
     Výstupní parametry
     ------------------
-    res ....... výsledná hodnota derivace v bodě x0
-    progress .. slovník s celým výpočtem:
-        f_der_sym_x0 .... hodnota symbolické derivace v x0
-        err ............. chyba |přesné-numerické| řešení
-        
+    Numerická hodnota derivace fce v bodě x0.
     
-    TODO
-    - vracet podklady pro vykreslení: (???)
-            - původní funkci symbolicky,
-            - její derivaci jako přímku,
-            - numerickou derivaci jako přímku
     '''
+    f = str_to_func(f_str)    
+    return (f(x0+h)-f(x0-h))/(2*h)
+
+def sym_diff(f_str, x0):
+    '''
+    Vypočte symbolicky hodnotu derivace funkce v bodě.
     
+    Vstupní parametry
+    -----------------
+    f ........ zadaná funkce (string)
+    x0 ....... bod v kterém chci derivaci f
+    
+    Výstupní parametry
+    ------------------
+    Hodnota derivace fce v bodě x0.
+    '''
     x = sym.symbols('x')
-    f_sym = sym.sympify(f)
-    f_der_sym_x0 = sym.diff(f_sym,x).subs(x,x0).evalf()
-    
-    f_x0 = f_sym.subs(x,x0).evalf()
-    f_x0_plus_h = f_sym.subs(x,x0+h).evalf()
-    f_x0_minus_h = f_sym.subs(x,x0-h).evalf()
-    if method == 'fd':
-        f_der_x0 = (f_x0_plus_h-f_x0)/h
-    elif method == 'bd':
-        f_der_x0 = (f_x0-f_x0_minus_h)/h
-    else:
-        f_der_x0 = (f_x0_plus_h-f_x0_minus_h)/h/2
-    
-    result = {
-        'f_der_x0': f_der_x0,
-        'f_der_sym_x0' : f_der_sym_x0,
-        'err': np.abs(f_der_sym_x0-f_der_x0)
-    }
-    
-    
-    return result
+    f_sym = sym.sympify(f_str)
+    return sym.diff(f_sym,x).subs(x,x0).evalf()
+
