@@ -1,9 +1,10 @@
 import numpy as np
 
 
-def gauss_seidel_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
+def gauss_seidel(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
     '''
-    Gauss-Seidelova metoda pro řešení soustavy rovnic Ax=b
+    Gauss-Seidelova metoda pro řešení soustavy rovnic Ax = b
+
     Vstupní parametry
     -----------------
     A .............. matice soustavy
