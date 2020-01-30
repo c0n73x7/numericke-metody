@@ -25,7 +25,7 @@ def forward_difference(f_str, x0, h):
     
     Vstupní parametry
     -----------------
-    f ........ zadaná funkce (string)
+    f_str .... zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     h ........ krok
     
@@ -44,7 +44,7 @@ def backward_difference(f_str, x0, h):
     
     Vstupní parametry
     -----------------
-    f ........ zadaná funkce (string)
+    f_str .... zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     h ........ krok
     
@@ -63,7 +63,7 @@ def central_difference(f_str, x0, h):
     
     Vstupní parametry
     -----------------
-    f ........ zadaná funkce (string)
+    f_str .... zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     h ........ krok
     
@@ -81,7 +81,7 @@ def second_central_difference(f_str, x0, h):
     
     Vstupní parametry
     -----------------
-    f ........ zadaná funkce (string)
+    f_str .... zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     h ........ krok
     
@@ -99,7 +99,7 @@ def sym_diff(f_str, x0):
     
     Vstupní parametry
     -----------------
-    f ........ zadaná funkce (string)
+    f_str .... zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     
     Výstupní parametry
@@ -116,7 +116,7 @@ def sym_diff2(f_str, x0):
     
     Vstupní parametry
     -----------------
-    f ........ zadaná funkce (string)
+    f_str .... zadaná funkce (string)
     x0 ....... bod v kterém chci derivaci f
     
     Výstupní parametry
