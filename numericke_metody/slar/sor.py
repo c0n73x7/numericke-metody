@@ -58,4 +58,4 @@ def compute_omega_opt(A):
     U, L = np.triu(A) - D, np.tril(A) - D
     H = np.dot(np.linalg.inv(-D), L + U)
     eig_max = np.max(np.linalg.eigvals(H))
-    return 2 / (1 + np.sqrt(1 - eig_max**2))
+    return 2 / (1 + np.sqrt(1 - np.power(eig_max, 2)))
