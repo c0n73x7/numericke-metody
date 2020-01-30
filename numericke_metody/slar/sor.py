@@ -1,14 +1,15 @@
 import numpy as np
 
 
-def gauss_seidel_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
+def sor_method(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
     '''
-    Gauss-Seidelova metoda pro řešení soustavy rovnic Ax=b
+    SOR metoda pro řešení soustavy rovnic Ax=b
     Vstupní parametry
     -----------------
     A .............. matice soustavy
     b .............. vektor pravé strany
     x0 ............. vektor počáteční aproximace
+    omega .......... relaxační parametr z intervalu (0, 2)
     eps ............ požadovaná přesnost
     max_iter ....... maximální počet iterací
     show_progress .. vypisovat / nevypisovat průběh výpočtu
@@ -24,8 +25,8 @@ def gauss_seidel_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
     '''
     D = np.diag(np.diagonal(A))
     U, L = np.triu(A) - D, np.tril(A) - D
-    H = np.dot(np.linalg.inv(-(L + D)), U)
-    g = np.dot(np.linalg.inv(L + D), b)
+    H = np.dot(np.linalg.inv(omega * L + D), (1 - omega) * D - omega * U)
+    g = np.dot(np.linalg.inv(omega * L + D), omega * b)
     x_vals, norm_err_vals = list(), [None]
     x = x0
     if show_progress:
@@ -50,3 +51,11 @@ def gauss_seidel_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
         'norm_err_vals': norm_err_vals,
     }
     return result
+
+
+def compute_omega_opt(A):
+    D = np.diag(np.diagonal(A))
+    U, L = np.triu(A) - D, np.tril(A) - D
+    H = np.dot(np.linalg.inv(-D), L + U)
+    eig_max = np.max(np.linalg.eigvals(H))
+    return 2 / (1 + np.sqrt(1 - np.power(eig_max, 2)))
