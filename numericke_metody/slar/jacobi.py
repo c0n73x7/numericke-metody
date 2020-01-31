@@ -1,9 +1,10 @@
 import numpy as np
 
 
-def jacobi_method(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
+def jacobi(A, b, x0, eps=0.001, max_iter=100, show_progress=False):
     '''
-    Jacobiho metoda pro řešení soustavy rovnic Ax=b
+    Jacobiho metoda pro řešení soustavy rovnic Ax = b
+
     Vstupní parametry
     -----------------
     A .............. matice soustavy

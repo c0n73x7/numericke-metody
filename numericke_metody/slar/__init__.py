@@ -1,3 +1,4 @@
-from .gauss_seidel import gauss_seidel_method
-from .jacobi import jacobi_method
-from .sor import sor_method, compute_omega_opt
+from .gauss_seidel import gauss_seidel
+from .jacobi import jacobi
+from .sor import sor, compute_opt_omega
+from .gem import gaussian_elimination

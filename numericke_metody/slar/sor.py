@@ -1,9 +1,10 @@
 import numpy as np
 
 
-def sor_method(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
+def sor(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
     '''
-    SOR metoda pro řešení soustavy rovnic Ax=b
+    SOR metoda pro řešení soustavy rovnic Ax = b
+
     Vstupní parametry
     -----------------
     A .............. matice soustavy
@@ -53,7 +54,18 @@ def sor_method(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
     return result
 
 
-def compute_omega_opt(A):
+def compute_opt_omega(A):
+    '''
+    Výpočet optimálního omega pro SOR metodu
+
+    Vstupní parametry
+    -----------------
+    A .............. matice soustavy
+
+    Výstupní parametry
+    ------------------
+    omega .......... optimální omega
+    '''
     D = np.diag(np.diagonal(A))
     U, L = np.triu(A) - D, np.tril(A) - D
     H = np.dot(np.linalg.inv(-D), L + U)
