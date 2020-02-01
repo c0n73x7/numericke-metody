@@ -72,7 +72,7 @@ def trapezoid_integrate(f_str, a, b, N):
     for i in range(N):
           xl = a + i * h
           xr = a + (i+1) * h
-          result += (f(xl)+f(xr)) * h/2
+          result += (f(xl) + f(xr)) * h/2
 
     return result
 
@@ -105,7 +105,7 @@ def simpson_integrate(f_str, a, b, N):
           xl = a + 2*i * h
           xc = a + (2*i+1) * h            
           xr = a + 2*(i+1) * h
-          result += (f(xr)+4*f(xc)+f(xl)) * h/3
+          result += (f(xr) + 4*f(xc) + f(xl)) * h/3
     
     return result
 
@@ -131,9 +131,6 @@ def richardson_integrate(f_str, a, b, N, cor_num = 3, method = 'rt'):
         f_int ........ numerická hodnota integrálu fce
         f_int_vals ... hodnoty použité metody a všech korekcí 
     '''
-    
-    #hs = [h_init/(2**i) for i in range(N+1)]
-    
     I = []
     if method == 'rt':
         I.append([rectangle_integrate(f_str, a, b, N*(2**i)) for i in range(cor_num+1)])
@@ -153,7 +150,7 @@ def richardson_integrate(f_str, a, b, N, cor_num = 3, method = 'rt'):
         return result
         
     for i in range(cor_num):
-        I.append([I[i][j+1]-(I[i][j+1]-I[i][j])/(1-2**(m*(i+1))) for j in range(len(I[i])-1)])
+        I.append([I[i][j+1] - (I[i][j+1] - I[i][j]) / (1 - 2**(m * (i+1))) for j in range(len(I[i])-1)])
     
     result = {
         'f_int': I[-1][-1],
