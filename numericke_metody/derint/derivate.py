@@ -35,7 +35,7 @@ def forward_difference(f_str, x0, h):
     
     '''
     f = str_to_func(f_str)
-    return (f(x0+h)-f(x0))/h
+    return (f(x0+h) - f(x0)) / h
 
 
 def backward_difference(f_str, x0, h):
@@ -54,7 +54,7 @@ def backward_difference(f_str, x0, h):
     
     '''
     f = str_to_func(f_str)
-    return (f(x0)-f(x0-h))/h
+    return (f(x0) - f(x0-h)) / h
 
 
 def central_difference(f_str, x0, h):
@@ -73,7 +73,7 @@ def central_difference(f_str, x0, h):
     
     '''
     f = str_to_func(f_str)    
-    return (f(x0+h)-f(x0-h))/(2*h)
+    return (f(x0+h) - f(x0-h)) / (2*h)
 
 
 def der_richardson(f_str, x0, h_init, N, method='cd'):
@@ -118,7 +118,7 @@ def der_richardson(f_str, x0, h_init, N, method='cd'):
         return result
         
     for i in range(N):
-        D.append([D[i][j+1]-(D[i][j+1]-D[i][j])/(1-2**(m*(i+1))) for j in range(len(D[i])-1)])
+        D.append([D[i][j+1] - (D[i][j+1] - D[i][j]) / (1 - 2**(m * (i+1))) for j in range(len(D[i]) - 1)])
         
     result = {
         'f_der': D[-1][-1],
@@ -144,7 +144,7 @@ def second_central_difference(f_str, x0, h):
     
     '''
     f = str_to_func(f_str)    
-    return (f(x0+h)-2*f(x0)+f(x0-h))/h**2
+    return (f(x0+h) - 2*f(x0) + f(x0-h)) / h**2
 
 def sym_diff(f_str, x0):
     '''

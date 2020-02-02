@@ -158,3 +158,96 @@ def richardson_integrate(f_str, a, b, N, cor_num = 3, method = 'rt'):
     }
     
     return result
+
+
+def gauss_1_integrate(f_str, a, b, N):
+    '''
+    Vypočítá určitý integrál funkce pomocí 1-bodového Gaussova kvadraturního vzorce.
+    
+    Vstupní parametry
+    -----------------
+    f_str .... zadaná funkce (string)
+    a ........ dolní mez
+    b ........ horní mez
+    N ........ počet intervalů dělení
+    
+    Výstupní parametry
+    ------------------
+    Numerická hodnota určitého integrálu fce od a do b
+    
+    '''   
+    
+    f = str_to_func(f_str)
+    h = (b - a) / N
+    result = 0
+    
+    for i in range(N):
+        xl = a + i * h
+        xr = a + (i+1) * h
+        x = (xl + xr) / 2
+        result += h * f(x)
+        
+    return result
+
+
+def gauss_2_integrate(f_str, a, b, N):
+    '''
+    Vypočítá určitý integrál funkce pomocí 2-bodového Gaussova kvadraturního vzorce.
+    
+    Vstupní parametry
+    -----------------
+    f_str .... zadaná funkce (string)
+    a ........ dolní mez
+    b ........ horní mez
+    N ........ počet intervalů dělení
+    
+    Výstupní parametry
+    ------------------
+    Numerická hodnota určitého integrálu fce od a do b
+    '''
+    f = str_to_func(f_str)
+    h = (b - a) / N
+    result = 0
+    
+    for i in range(N):
+        xl = a + i * h
+        xr = a + (i+1) * h
+        
+        x1 = (xl + xr) / 2 - (1/3)**.5 * (xr - xl) / 2
+        x2 = (xl + xr) / 2 + (1/3)**.5 * (xr - xl) / 2
+
+        result += h/2 * (f(x1)+f(x2))
+        
+    return result
+
+
+def gauss_3_integrate(f_str, a, b, N):
+    '''
+    Vypočítá určitý integrál funkce pomocí 3-bodového Gaussova kvadraturního vzorce.
+    
+    Vstupní parametry
+    -----------------
+    f_str .... zadaná funkce (string)
+    a ........ dolní mez
+    b ........ horní mez
+    N ........ počet intervalů dělení
+    
+    Výstupní parametry
+    ------------------
+    Numerická hodnota určitého integrálu fce od a do b
+    '''
+    f = str_to_func(f_str)
+    h = (b - a) / N
+    result = 0
+    
+    for i in range(N):
+        xl = a + i * h
+        xr = a + (i+1) * h
+        
+        x1 = (xl + xr) / 2 - (3/5)**.5 * (xr - xl) / 2
+        x2 = (xl + xr) / 2
+        x3 = (xl + xr) / 2 + (3/5)**.5 * (xr - xl) / 2
+
+        result += 5/18*h * f(x1) + 8/18*h *f(x2) + 5/18*h *f(x3)
+        
+    return result
