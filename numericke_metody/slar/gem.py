@@ -28,3 +28,19 @@ def gaussian_elimination(A, b):
             temp = temp + A[i, j] * x[j]
         x[i] = 1 / A[i, i] * (b[i] - temp)
     return x
+
+
+def gaussian_elimination_pivoting(A, b):
+    '''
+    Gaussova eliminační metoda se sloupcovou pivotací pro řešení soustavy Ax = b
+
+    Vstupní parametry
+    -----------------
+    A .............. matice soustavy
+    b .............. vektor pravé strany
+
+    Výstupní parametry
+    ------------------
+    x .............. vektor řešení soustavy
+    '''
+    pass
