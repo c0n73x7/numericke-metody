@@ -1,4 +1,4 @@
-# Project Setup (Linux)
+# Project Setup (Linux & Mac)
 * `python3 -m venv venv`
 * `source venv/bin/activate`
 * `python setup.py develop`
