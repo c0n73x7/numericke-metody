@@ -26,17 +26,17 @@ def regula_falsi(f, a, b, delta, max_iter=300, show_progress=False):
         s_vals.append(s)
         if show_progress:
             print(f'Iteration: {it}')
-            print(f'x_approx: {s_vals[-1]}')
+            print(f'x_approx: {s}')
             print()
         if np.abs(f(s)) < delta:
             break
+        if f(a) * f(s) < 0:
+            b = s
         else:
-            if f(a) * f(s) < 0:
-                b = s
-            else:
-                a = s
+            a = s
     result = {
         'x_approx': s_vals[-1],
+        'iters': it,
         's_vals': s_vals,
     }
     return result
