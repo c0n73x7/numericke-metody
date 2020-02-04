@@ -1,3 +1,8 @@
+# Project Setup (Windows)
+* `py -3 -m venv venv`
+* `venv\Scripts\activate`
+* `python setup.py develop`
+
 # Project Setup (Linux & Mac)
 * `python3 -m venv venv`
 * `source venv/bin/activate`
