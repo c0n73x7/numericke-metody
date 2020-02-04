@@ -33,7 +33,7 @@ def simple_iteration(phi, x0, eps=0.001, max_iter=300, show_progress=False):
         abs_err_vals.append(np.abs(x - x_vals[-1]))
         if show_progress:
             print(f'Iteration: {it}')
-            print(f'x = {x}, abs_err = {abs_err_vals[-1]}')
+            print(f'x_approx = {x}, abs_err = {abs_err_vals[-1]}')
             print()
         if abs_err_vals[-1] < eps:
             x_vals.append(x)
