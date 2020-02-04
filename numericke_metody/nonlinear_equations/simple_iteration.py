@@ -3,7 +3,7 @@ import numpy as np
 
 def simple_iteration(phi, x0, eps=0.001, max_iter=300, show_progress=False):
     '''
-    The Method of Simple Iteration
+    Simple Iteration Method
 
     Input Params
     ------------
