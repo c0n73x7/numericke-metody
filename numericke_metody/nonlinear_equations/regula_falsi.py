@@ -18,6 +18,7 @@ def regula_falsi(f, a, b, delta, max_iter=300, show_progress=False):
     -------------
     result -> dict
         x_approx .. TODO
+        iters ..... TODO
         s_vals .... TODO
     '''
     s_vals = list()

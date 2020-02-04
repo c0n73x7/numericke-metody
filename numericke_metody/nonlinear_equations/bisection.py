@@ -2,6 +2,25 @@ import numpy as np
 
 
 def bisection(f, a, b, eps, max_iter=300, show_progress=False):
+    '''
+    Bisection Method
+
+    Input Params
+    ------------
+    f .............. TODO
+    a .............. TODO
+    b .............. TODO
+    eps ............ TODO
+    max_iter ....... TODO
+    show_progress .. TODO
+
+    Output Params
+    -------------
+    result -> dict
+        x_approx .. TODO
+        iters ..... TODO
+        s_vals .... TODO
+    '''
     s_vals = list()
     for it in range(1, max_iter+1):
         s = (a + b) / 2.
