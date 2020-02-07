@@ -223,7 +223,7 @@ def jacobi_max(A, eps=1e-5, max_iter=25, progress=0):
     return np.diagonal(A)
 
 
-def rayleigh(A, y0, eps = 1e-3, max_iter=25, progress=0):
+def rayleigh(A, y0, eps = 1e-3, max_iter = 25, norm = False, progress=0):
     '''
     Finds principal eigenvalue of square symetric matrix using Rayleigh quotient.
     
@@ -232,6 +232,7 @@ def rayleigh(A, y0, eps = 1e-3, max_iter=25, progress=0):
     A .......... square numpy array
     eps ........ absolute tolerance
     max_iter ... maximum number of iterations
+    norm ....... norm eigenvector during each iteration (True/False)
     progess .... show animated iterations
             0 .... show nothing
             >0 ... delay between iterations (seconds fractions)
@@ -255,6 +256,8 @@ def rayleigh(A, y0, eps = 1e-3, max_iter=25, progress=0):
             lambda_tmp = ((y[k].T @ y[k+1]) / (y[k].T @ y[k]))
             lambda_prc.append(lambda_tmp.item(0))
             err.append(np.abs(lambda_prc[k]-lambda_prc[k+1]))
+            if norm:
+                y[-1] = y[-1] / np.linalg.norm(y[-1])
             k += 1
             if progress:
                 clear_output(wait=True)
