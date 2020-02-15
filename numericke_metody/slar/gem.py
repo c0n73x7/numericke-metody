@@ -3,16 +3,16 @@ import numpy as np
 
 def gaussian_elimination(A, b):
     '''
-    Gaussova eliminační metoda pro řešení soustavy Ax = b
+    Gaussian elimination
 
-    Vstupní parametry
-    -----------------
-    A .............. matice soustavy
-    b .............. vektor pravé strany
+    Input Params
+    ------------
+    A .............. coefficient matrix
+    b .............. right-hand side vector
 
-    Výstupní parametry
-    ------------------
-    x .............. vektor řešení soustavy
+    Output Params
+    -------------
+    x .............. solution
     '''
     _check_input(A, b)
     n = A.shape[0]
@@ -36,17 +36,17 @@ def gaussian_elimination(A, b):
 
 def gaussian_elimination_pivoting(A, b, show_progress=False):
     '''
-    Gaussova eliminační metoda s částečnou pivotací pro řešení soustavy Ax = b
+    Gaussian elimination with partial pivoting
 
-    Vstupní parametry
-    -----------------
-    A .............. matice soustavy
-    b .............. vektor pravé strany
-    show_progress .. vypisovat / nevypisovat průběh výpočtu
+    Input Params
+    ------------
+    A .............. coefficient matrix
+    b .............. right-hand side vector
+    show_progress .. print progress of computation
 
-    Výstupní parametry
-    ------------------
-    x .............. vektor řešení soustavy
+    Output Params
+    -------------
+    x .............. solution
     '''
     _check_input(A, b)
     n = A.shape[0]

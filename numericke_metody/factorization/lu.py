@@ -3,16 +3,16 @@ import numpy as np
 
 def lu(A):
     '''
-    LU rozklad bez pivotace
+    LU decompostion
 
-    Vstupní parametry
-    -----------------
-    A .............. čtvercová matice
+    Input Params
+    ------------
+    A .............. square matrix
 
-    Výstupní parametry
-    ------------------
-    L .............. dolní trojúhelníková matice s jedničkami na diagonále
-    U .............. horní trojúhelníková matice
+    Output Params
+    -------------
+    L .............. lower triangular matrix with ones on the diagonal
+    U .............. upper triangular matrix
     '''
     A = np.copy(A)
     n = A.shape[0]
@@ -28,17 +28,17 @@ def lu(A):
 
 def lu_pivoting(A):
     '''
-    LU rozklad s částečnou pivotací
+    LU decompostion with partial pivoting
 
-    Vstupní parametry
-    -----------------
-    A .............. čtvercová matice
+    Input Params
+    ------------
+    A .............. square matrix
 
-    Výstupní parametry
-    ------------------
-    L .............. dolní trojúhelníková matice s jedničkami na diagonále
-    U .............. horní trojúhelníková matice
-    piv ............ indexy reprezentující přeházení řádků
+    Output Params
+    -------------
+    L .............. lower triangular matrix with ones on the diagonal
+    U .............. upper triangular matrix
+    piv ............ pivoting indices
     '''
     A = np.copy(A)
     n = A.shape[0]

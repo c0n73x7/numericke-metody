@@ -7,21 +7,21 @@ def newton(f, df, x0, eps=0.001, max_iter=300, show_progress=False):
 
     Input Params
     ------------
-    f .............. TODO
-    df ............. TODO
-    x0 ............. TODO
-    eps ............ TODO
-    max_iter ....... TODO
-    show_progress .. TODO
+    f .............. input function
+    df ............. derivative of the input function
+    x0 ............. initial approximation
+    eps ............ tolerance
+    max_iter ....... maximum number of iterations
+    show_progress .. print progress of computation
 
     Output Params
     -------------
     result -> dict
-        x_approx ...... TODO
-        abs_err ....... TODO
-        iters ......... TODO
-        x_vals ........ TODO
-        abs_err_vals .. TODO
+        x_approx ...... approximation of solution
+        abs_err ....... absolute error
+        iters ......... number of iterations
+        x_vals ........ approximations of solution during the computation
+        abs_err_vals .. absolute errors during the computation
     '''
     x_vals, abs_err_vals = list(), [None]
     x = x0
@@ -55,21 +55,21 @@ def modified_newton(f, df_x0, x0, eps=0.001, max_iter=300, show_progress=False):
 
     Input Params
     ------------
-    f .............. TODO
-    df_x0 .......... TODO
-    x0 ............. TODO
-    eps ............ TODO
-    max_iter ....... TODO
-    show_progress .. TODO
+    f .............. input function
+    df_x0 .......... derivative of the input function at x0
+    x0 ............. initial approximation
+    eps ............ tolerance
+    max_iter ....... maximum number of iterations
+    show_progress .. print progress of computation
 
     Output Params
     -------------
     result -> dict
-        x_approx ...... TODO
-        abs_err ....... TODO
-        iters ......... TODO
-        x_vals ........ TODO
-        abs_err_vals .. TODO
+        x_approx ...... approximation of solution
+        abs_err ....... absolute error
+        iters ......... number of iterations
+        x_vals ........ approximations of solution during the computation
+        abs_err_vals .. absolute errors during the computation
     '''
     x_vals, abs_err_vals = list(), [None]
     x = x0
