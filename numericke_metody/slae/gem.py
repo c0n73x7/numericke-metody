@@ -56,7 +56,7 @@ def gaussian_elimination_pivoting(A, b, show_progress=False):
         A[[k, idx]] = A[[idx, k]]
         b[[k, idx]] = b[[idx, k]]
         if show_progress and idx != k:
-            print(f'Měním {idx}. řádek s {k}. řádkem')
+            print(f'row {idx} <-> row {k}')
             print()
 
         for i in range(k+1, n):

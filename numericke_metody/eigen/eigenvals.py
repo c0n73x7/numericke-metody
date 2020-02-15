@@ -2,7 +2,7 @@ from time import sleep
 from IPython.display import clear_output
 
 import numpy as np
-from numericke_metody.factorization import lu as lu_factorization
+from numericke_metody.decomposition import lu as lu_factorization
 from .utils import is_upper_triag
 
 
