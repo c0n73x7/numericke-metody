@@ -11,3 +11,27 @@
 
 # Python Course
 * https://naucse.python.cz/course/pyladies/
+
+
+# TODO
+## System of Linear Equations
+* gradient descent
+* conjugate gradients
+
+## Nonlinear Equations
+* secant method
+* Muller method
+
+## Approximation of Functions
+* Taylor series
+* Lagrange polynomial
+* Newton polynom
+* Nevill's algorithm
+* cubic spline
+* discrete l2 approximation
+* continuous L2 approximation
+* Fourier analysis
+
+## Matrix Decomposition
+* QR decomposition
+* Cholesky decomposition

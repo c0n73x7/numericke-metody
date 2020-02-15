@@ -1,19 +1,19 @@
 import numpy as np
-from numericke_metody.factorization import lu as lu_factorization
+from numericke_metody.decomposition import lu as lu_factorization
 
 
 def lu(A, b):
     '''
-    Metoda LU rozkladu pro řešení soustavy Ax = b
+    LU method
 
-    Vstupní parametry
-    -----------------
-    A .............. matice soustavy
-    b .............. vektor pravé strany
+    Input Params
+    ------------
+    A .............. coefficient matrix
+    b .............. right-hand side vector
 
-    Výstupní parametry
-    ------------------
-    x .............. vektor řešení soustavy
+    Output Params
+    -------------
+    x .............. solution
     '''
     L, U = lu_factorization(A)
     n = A.shape[0]

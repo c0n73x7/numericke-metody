@@ -7,20 +7,20 @@ def simple_iteration(phi, x0, eps=0.001, max_iter=300, show_progress=False):
 
     Input Params
     ------------
-    phi ............ TODO
-    x0 ............. TODO
-    eps ............ TODO
-    max_iter ....... TODO
-    show_progress .. TODO
+    phi ............ input function phi
+    x0 ............. initial approximation
+    eps ............ tolerance
+    max_iter ....... maximum number of iterations
+    show_progress .. print progress of computation
 
     Output Params
     -------------
     result -> dict
-        x_approx ...... TODO
-        abs_err ....... TODO
-        iters ......... TODO
-        x_vals ........ TODO
-        abs_err_vals .. TODO
+        x_approx ...... approximation of solution
+        abs_err ....... absolute error
+        iters ......... number of iterations
+        x_vals ........ approximations of solution during the computation
+        abs_err_vals .. absolute errors during the computation
     '''
     x_vals, abs_err_vals = list(), [None]
     x = x0

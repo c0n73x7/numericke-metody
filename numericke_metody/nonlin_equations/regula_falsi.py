@@ -7,19 +7,19 @@ def regula_falsi(f, a, b, delta, max_iter=300, show_progress=False):
 
     Input Params
     ------------
-    f .............. TODO
-    a .............. TODO
-    b .............. TODO
-    delta .......... TODO
-    max_iter ....... TODO
-    show_progress .. TODO
+    f .............. input function
+    a .............. beginning of interval
+    b .............. end of interval
+    delta .......... tolerance
+    max_iter ....... maximum number of iterations
+    show_progress .. print progress of computation
 
     Output Params
     -------------
     result -> dict
-        x_approx .. TODO
-        iters ..... TODO
-        s_vals .... TODO
+        x_approx .. approximation of solution
+        iters ..... number of iterations
+        s_vals .... approximations of solution during the computation
     '''
     s_vals = list()
     for it in range(1, max_iter+1):

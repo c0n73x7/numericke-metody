@@ -3,26 +3,26 @@ import numpy as np
 
 def sor(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
     '''
-    SOR metoda pro řešení soustavy rovnic Ax = b
+    SOR method
 
-    Vstupní parametry
-    -----------------
-    A .............. matice soustavy
-    b .............. vektor pravé strany
-    x0 ............. vektor počáteční aproximace
-    omega .......... relaxační parametr z intervalu (0, 2)
-    eps ............ požadovaná přesnost
-    max_iter ....... maximální počet iterací
-    show_progress .. vypisovat / nevypisovat průběh výpočtu
+    Input Params
+    ------------
+    A .............. coefficient matrix
+    b .............. right-hand side vector
+    x0 ............. vector of the initial approximation
+    omega .......... relaxation parameter from the interval (0, 2)
+    eps ............ tolerance
+    max_iter ....... maximum number of iterations
+    show_progress .. print progress of computation
 
-    Výstupní parametry (slovník)
-    ----------------------------
-    result keys
-        x_approx ....... aproximace řešení
-        norm_err ....... euklidovská norma rozdílu posledních dvou iterací
-        iters .......... počet iteračních kroků metody
-        x_vals ......... aproximace řešení v průběhu výpočtu
-        norm_err_vals .. euklidovská norma rozdílu dvou po sobě jdoucích iterací v průběhu výpočtu
+    Output Params
+    -------------
+    result -> dict
+        x_approx ....... approximation of solution
+        norm_err ....... euclidean norm of difference of the last two iterations
+        iters .......... number of iterations
+        x_vals ......... approximations of solution during the computation
+        norm_err_vals .. euclidean norm of difference of two successive iterations
     '''
     D = np.diag(np.diagonal(A))
     U, L = np.triu(A) - D, np.tril(A) - D
@@ -31,14 +31,14 @@ def sor(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
     x_vals, norm_err_vals = list(), [None]
     x = x0
     if show_progress:
-        print(f'Počáteční aproximace x0 = {x.flatten()}')
+        print(f'Initial approximation x0 = {x.flatten()}')
         print()
     for it in range(1, max_iter + 1):
         x_vals.append(x)
         x = np.dot(H, x) + g
         norm_err_vals.append(np.linalg.norm(x_vals[-1] - x))
         if show_progress:
-            print(f'Iterace: {it}')
+            print(f'Iteration: {it}')
             print(f'x = {x.flatten()}, norm_err = {norm_err_vals[-1]}')
             print()
         if norm_err_vals[-1] < eps:
@@ -56,15 +56,15 @@ def sor(A, b, x0, omega, eps=0.001, max_iter=100, show_progress=False):
 
 def compute_opt_omega(A):
     '''
-    Výpočet optimálního omega pro SOR metodu
+    Compute optimal omega for SOR method
 
-    Vstupní parametry
-    -----------------
-    A .............. matice soustavy
+    Input Params
+    ------------
+    A .............. coefficient matrix
 
-    Výstupní parametry
-    ------------------
-    omega .......... optimální omega
+    Output Params
+    -------------
+    omega .......... optimal omega
     '''
     D = np.diag(np.diagonal(A))
     U, L = np.triu(A) - D, np.tril(A) - D
