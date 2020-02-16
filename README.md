@@ -18,10 +18,6 @@
 * gradient descent
 * conjugate gradients
 
-## Nonlinear Equations
-* secant method
-* Muller method
-
 ## Approximation of Functions
 * Taylor series
 * Lagrange polynomial
