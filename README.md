@@ -19,7 +19,6 @@
 * conjugate gradients
 
 ## Approximation of Functions
-* Taylor series
 * Lagrange polynomial
 * Newton polynom
 * Nevill's algorithm
