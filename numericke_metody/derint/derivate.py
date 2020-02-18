@@ -3,15 +3,15 @@ import sympy as sym
 
 def str_to_func(s):
     '''
-    Ze stringu vytvoří numpy fci.
+    Makes a numpy function out of string
 
-    Vstupní parametry
+    Input params
     -----------------
-    s .... string obsahující fci v proměnné x (např. sin(1/x)).
+    s .... string with function variable x (for example sin(1/x)).
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numpy funkce.
+    Numpy function.
     
     '''
     x = sym.symbols('x')
@@ -21,17 +21,17 @@ def str_to_func(s):
 
 def forward_difference(f_str, x0, h):
     '''
-    Vypočítá derivaci funkce f v bodě x0 pomocí pravé diference
+    Calculate derivative of a function at point x0 using forward difference
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
-    h ........ krok
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
+    h ........ step
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota derivace fce v bodě x0.
+    Numeric value of f derivative at x0.
     
     '''
     f = str_to_func(f_str)
@@ -40,17 +40,18 @@ def forward_difference(f_str, x0, h):
 
 def backward_difference(f_str, x0, h):
     '''
-    Vypočítá derivaci funkce f v bodě x0 pomocí levé diference
+    Calculate derivative of a function at point x0 using backward difference
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
-    h ........ krok
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
+    h ........ step
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota derivace fce v bodě x0.
+    Numeric value of f derivative at x0.
+    
     
     '''
     f = str_to_func(f_str)
@@ -59,17 +60,18 @@ def backward_difference(f_str, x0, h):
 
 def central_difference(f_str, x0, h):
     '''
-    Vypočítá derivaci funkce f v bodě x0 pomocí centrální diference
+   Calculate derivative of a function at point x0 using central difference
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
-    h ........ krok
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
+    h ........ step
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota derivace fce v bodě x0.
+    Numeric value of f derivative at x0.
+    
     
     '''
     f = str_to_func(f_str)    
@@ -78,24 +80,24 @@ def central_difference(f_str, x0, h):
 
 def der_richardson(f_str, x0, h_init, N, method='cd'):
     '''
-    Vypočítá derivaci funkce f v bodě x0 pomocí Richardsonovy extrapolace
+    Calculate derivative of a function at point x0 using Richardson extrapolation
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
-    h_init.... základní krok
-    N ........ počet korekcí 
-    method ... použitá defierence
-            fd ... levá
-            bd ... pravá
-            cd ... centrální
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
+    h_init.... base step
+    N ........ number of corrections
+    method ... used difference
+            fd ... forward
+            bd ... backward
+            cd ... central
     
-    Výstupní parametry (slovník)
+    Output params (dictionary)
     ----------------------------
     result keys
-        f_der ........ Numerická hodnota derivace fce v bodě x0.
-        f_der_vals ... hodnoty použité metody a všech korekcí 
+        f_der ........ numeric value of f derivative at x0
+        f_der_vals ... values of used method and all its corrections
     '''
     
     hs = [h_init/(2**i) for i in range(N+1)]
@@ -130,17 +132,17 @@ def der_richardson(f_str, x0, h_init, N, method='cd'):
 
 def second_central_difference(f_str, x0, h):
     '''
-    Vypočítá druhou derivaci funkce f v bodě x0 pomocí tříbodového vzorce
+    Calculate derivative of a function at point x0 using second-order central difference
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
-    h ........ krok
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
+    h ........ step
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota druhé derivace fce v bodě x0.
+    Numeric value of f derivative at x0.
     
     '''
     f = str_to_func(f_str)    
@@ -148,16 +150,17 @@ def second_central_difference(f_str, x0, h):
 
 def sym_diff(f_str, x0):
     '''
-    Vypočte symbolicky hodnotu derivace funkce v bodě.
+    Calculate symbolically derivative of a function at point x0.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
     
-    Výstupní parametry
+    Output params
     ------------------
-    Hodnota derivace fce v bodě x0.
+    Value of f derivative at x0.
+    
     '''
     x = sym.symbols('x')
     f_sym = sym.sympify(f_str)
@@ -165,16 +168,17 @@ def sym_diff(f_str, x0):
 
 def sym_diff2(f_str, x0):
     '''
-    Vypočte symbolicky hodnotu druhé derivace funkce v bodě.
+    Calculate symbolically second derivative of a function at point x0.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    x0 ....... bod v kterém chci derivaci f
+    f_str .... function (string)
+    x0 ....... point to calculate derivative at
     
-    Výstupní parametry
+    Output params
     ------------------
-    Hodnota druhé derivace fce v bodě x0.
+    Value of f second derivative at x0.
+    
     '''
     x = sym.symbols('x')
     f_sym = sym.sympify(f_str)
