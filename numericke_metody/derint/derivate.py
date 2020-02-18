@@ -96,7 +96,7 @@ def der_richardson(f_str, x0, h_init, N, method='cd'):
     Output params (dictionary)
     ----------------------------
     result keys
-        f_der ........ Numeric value of f derivative at x0
+        f_der ........ numeric value of f derivative at x0
         f_der_vals ... values of used method and all its corrections
     '''
     
@@ -150,7 +150,7 @@ def second_central_difference(f_str, x0, h):
 
 def sym_diff(f_str, x0):
     '''
-    Calculate symbolicaly derivative of a function at point x0.
+    Calculate symbolically derivative of a function at point x0.
     
     Input params
     -----------------
@@ -168,7 +168,7 @@ def sym_diff(f_str, x0):
 
 def sym_diff2(f_str, x0):
     '''
-    Calculate symbolicaly second derivative of a function at point x0.
+    Calculate symbolically second derivative of a function at point x0.
     
     Input params
     -----------------

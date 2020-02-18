@@ -5,17 +5,17 @@ from .derivate import str_to_func
 
 def sym_integrate(f_str, a, b):
     '''
-    Vypočítá symbolicky určitý integrál funkce.
+    Symbolically calculates integral of a function.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
     
-    Výstupní parametry
+    Output params
     ------------------
-    Určitý integrál fce od a do b.
+    Value of integral with bounds a and b.
     '''
     x = sym.symbols('x')
     f_sym = sym.sympify(f_str)
@@ -24,18 +24,18 @@ def sym_integrate(f_str, a, b):
 
 def rectangle_integrate(f_str, a, b, N):
     '''
-    Vypočítá určitý integrál funkce pomocí obdélníkového pravidla.
+    Calculates value of integral with bounds using rectangle method.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota určitého integrálu fce od a do b
+    Numeric value of integral with bounds a and b.
     
     '''
     f = str_to_func(f_str)
@@ -51,18 +51,18 @@ def rectangle_integrate(f_str, a, b, N):
 
 def trapezoid_integrate(f_str, a, b, N):
     '''
-    Vypočítá určitý integrál funkce pomocí lichoběžníkového pravidla.
+    Calculates value of integral with bounds using trapezoid rule.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota určitého integrálu fce od a do b
+    Numeric value of integral with bounds a and b.
     
     '''    
     f = str_to_func(f_str)
@@ -79,18 +79,18 @@ def trapezoid_integrate(f_str, a, b, N):
 
 def simpson_integrate(f_str, a, b, N):
     '''
-    Vypočítá určitý integrál funkce pomocí Simpsonova pravidla.
+    Calculates value of integral with bounds using Simpsons rule.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota určitého integrálu fce od a do b
+    Numeric value of integral with bounds a and b.
     
     '''    
     f = str_to_func(f_str)
@@ -111,25 +111,26 @@ def simpson_integrate(f_str, a, b, N):
 
 def richardson_integrate(f_str, a, b, N, cor_num = 3, method = 'rt'):
     '''
-    Vypočítá určitý integrál funkce pomocí Richardsonovy extrapolace
+    Calculates value of integral with bounds using Richardson extrapolation.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
-    cor_num .. počet korekcí 
-    method ... použité pravidlo
-            rt ... obdélníkové pravidlo
-            tr ... lichoběžníkové pravidlo
-            sm ... simpsonovo pravidlo
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
+    cor_num .. number of corrections
+    method ... used rule
+            rt ... rectangle rule
+            tr ... trapezoid rule
+            sm ... simpsons rule
     
-    Výstupní parametry (slovník)
+    Output params (dictionary)
     ----------------------------
     result keys
-        f_int ........ numerická hodnota integrálu fce
-        f_int_vals ... hodnoty použité metody a všech korekcí 
+        f_int ........ numeric value of integral with bounds a and b
+        f_int_vals ... values of used method and all its corrections
+    
     '''
     I = []
     if method == 'rt':
@@ -162,18 +163,18 @@ def richardson_integrate(f_str, a, b, N, cor_num = 3, method = 'rt'):
 
 def gauss_1_integrate(f_str, a, b, N):
     '''
-    Vypočítá určitý integrál funkce pomocí 1-bodového Gaussova kvadraturního vzorce.
+    Calculates value of integral with bounds using 1-point Gauss quadrature.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota určitého integrálu fce od a do b
+    Numeric value of integral with bounds a and b.
     
     '''   
     
@@ -192,18 +193,19 @@ def gauss_1_integrate(f_str, a, b, N):
 
 def gauss_2_integrate(f_str, a, b, N):
     '''
-    Vypočítá určitý integrál funkce pomocí 2-bodového Gaussova kvadraturního vzorce.
+    Calculates value of integral with bounds using 2-points Gauss quadrature.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota určitého integrálu fce od a do b
+    Numeric value of integral with bounds a and b.
+    
     '''
     f = str_to_func(f_str)
     h = (b - a) / N
@@ -223,18 +225,19 @@ def gauss_2_integrate(f_str, a, b, N):
 
 def gauss_3_integrate(f_str, a, b, N):
     '''
-    Vypočítá určitý integrál funkce pomocí 3-bodového Gaussova kvadraturního vzorce.
+    Calculates value of integral with bounds using 3-points Gauss quadrature.
     
-    Vstupní parametry
+    Input params
     -----------------
-    f_str .... zadaná funkce (string)
-    a ........ dolní mez
-    b ........ horní mez
-    N ........ počet intervalů dělení
+    f_str .... function (string)
+    a ........ lower bound
+    b ........ upper bound
+    N ........ number of subintervals
     
-    Výstupní parametry
+    Output params
     ------------------
-    Numerická hodnota určitého integrálu fce od a do b
+    Numeric value of integral with bounds a and b.
+    
     '''
     f = str_to_func(f_str)
     h = (b - a) / N
