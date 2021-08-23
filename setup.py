@@ -9,6 +9,6 @@ setup(
         'matplotlib==3.1.2',
         'jupyter==1.0.0',
         'jupyterlab==1.2.6',
-        'notebook==6.0.3',
+        'notebook==6.4.1',
     ]
 )
